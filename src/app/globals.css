@@ -1,3 +1,31 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root{
+    --background-card: #282A36;
+}
+
+@layer components{
+
+    main{
+        @apply flex flex-col gap-y-6 justify-center items-center row-start-2 min-w-full min-h-full p-6 lg:gap-y-20;
+    }
+
+    .cad-empresa{
+        @apply bg-slate-800 w-80 h-80 flex flex-col self-center justify-center rounded-lg;
+        & .inputs{
+            @apply p-5 space-y-3;
+            & p {
+                @apply text-gray-300
+            }
+            & input{
+               @apply bg-transparent border-2 border-white rounded-md text-white;
+           }
+        }
+    }
+
+    .button{
+        @apply bg-blue-700 w-72 self-center h-10 rounded-md
+    }
+}
