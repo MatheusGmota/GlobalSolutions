@@ -1,3 +1,24 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components{
+
+    .main{
+        @apply flex flex-col gap-y-6 justify-center items-center row-start-2 min-w-full min-h-full p-6 lg:gap-y-20 font-sans;
+    }
+
+    .questoes{
+        @apply bg-slate-800 w-80 h-screen flex flex-col self-center rounded-lg;
+    }
+
+    .perguntas{
+        @apply text-white m-4;
+        & p {
+            @apply mb-1;
+        }
+        & input{
+            @apply w-72 mt-2 p-2 bg-transparent border-2 border-gray-400 rounded-md text-white;
+        }
+    }
+}

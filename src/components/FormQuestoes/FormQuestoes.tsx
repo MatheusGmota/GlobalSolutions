@@ -23,10 +23,12 @@ export function FormQuestoes() {
     return (
         <div className="questoes">
             <div>
+                <h2 className="text-center text-white text-3xl p-3">Questões Gerais</h2>
+                <p className="text-sm m-3">Responda as perguntas sobre características da sua empresa</p>
                 {questoes.map((q) => (
-                    <div key={q.idQuestao}>
+                    <div key={q.idQuestao} className="perguntas">
                         <p>
-                            {q.idQuestao} - {q.questao}
+                            {q.questao}
                         </p>
                         <input type="text"/>
                     </div>
