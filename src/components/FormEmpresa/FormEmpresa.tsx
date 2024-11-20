@@ -1,11 +1,16 @@
 "use client"
 
-import { TipoEmpresas } from "@/types";
-import { useEffect, useState } from "react";
+import { InterfaceTipoEmpresas, TipoEmpresa } from "@/types";
+import React, { useEffect, useState } from "react";
 
 export function FormEmpresa() {
 
-    const [tipoEmpresas, setTipoEmpresas] = useState<TipoEmpresas[]>([]);
+    const [empresa, setEmpresa] = useState<TipoEmpresa>({
+        idTipo: 0,
+        nome: "",
+        local: "",
+    })
+    const [tipoEmpresas, setTipoEmpresas] = useState<InterfaceTipoEmpresas[]>([]);
 
     useEffect(() => {
         const chamadaApi = async () => {
@@ -18,32 +23,58 @@ export function FormEmpresa() {
             }
         }
         chamadaApi();
-    })
+    }, [])
+
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) =>{
+        e.preventDefault()
+        try{
+            const response = await fetch('http://localhost:8080/api/empresa', {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(empresa)
+            });
+            if(response.ok){
+                const data = await response.json();
+                localStorage.setItem("id", data);
+            }
+        } catch (e) {
+            console.error(e)
+        }
+    }
 
     return (
         <>
             <div className="cad-empresa">
-                <section className="inputs">
+                <form className="inputs" onSubmit={handleSubmit}>
                     <div>
-                        <p>Nome da Empresa</p>
-                        <input className="border-white" type="text" name="nome" id="idNome" placeholder="Ex: BE-Fore" />
+                        <label>Nome da Empresa</label>
+                        <input className="border-white" type="text" name="nome" id="idNome" placeholder="Ex: BE-Fore" onChange={(e) => setEmpresa(
+                            {...empresa, nome: e.target.value}
+                        )}/>
                     </div>
                     <div>
-                        <p>Localização da Empresa</p>
-                        <input type="text" name="local" id="idLocal" placeholder="Ex: SP" />
+                        <label>Localização da Empresa</label>
+                        <input type="text" name="local" id="idLocal" placeholder="Ex: SP" onChange={(e) => setEmpresa(
+                            {...empresa, local: e.target.value}
+                        )}/>
                     </div>
                     <div>
-                        <p>Tipo</p>
-                        <select name="idTipo" id="idTipo" className="select select-bordered w-full max-w-xs mt-2">
-                            <option disabled selected>--- Tipo da Empresa ---</option>
-                            {tipoEmpresas.map((t) => (
-                                <option value={t.idTipo} key={t.idTipo}>
+                        <label>Tipo</label>
+                        <select name="idTipo" id="idTipo" className="select select-bordered w-full max-w-xs mt-2" onChange={(e) => setEmpresa(
+                            {...empresa, idTipo: parseInt(e.target.value)}
+                        )}>
+                            <option disabled defaultChecked>--- Tipo da Empresa ---</option>
+                            {tipoEmpresas.map((t, i) => (
+                                <option value={t.id} key={i}>
                                     {t.tipo}
                                 </option>
                             ))}
                         </select>
                     </div>
-                </section>
+                    <button type="submit" className="button">Avançar</button>
+                </form>
             </div>
         </>
     )

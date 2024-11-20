@@ -16,7 +16,7 @@
         @apply bg-slate-800 w-80 h-96 flex flex-col self-center rounded-lg;
         & .inputs{
             @apply p-4 space-y-5;
-            & p {
+            & label {
                 @apply text-gray-200
             }
             & input{
