@@ -9,7 +9,7 @@
     }
 
     .questoes{
-        @apply bg-slate-800 w-80 h-screen flex flex-col self-center rounded-lg;
+        @apply bg-slate-800 w-80 md:w-full h-screen md:h-auto flex flex-col self-center rounded-lg p-3 md:p-5;
     }
 
     .perguntas{
@@ -18,7 +18,7 @@
             @apply mb-1;
         }
         & input{
-            @apply w-72 mt-2 p-2 bg-transparent border-2 border-gray-400 rounded-md text-white;
+            @apply w-72 md:w-full mt-2  p-2 bg-transparent border-2 border-gray-400 rounded-md text-white;
         }
     }
 }
