@@ -2,7 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
+:root{
+    --background-card: #282A36;
+}
+
 @layer components{
+
+    .main{
+        @apply flex flex-col gap-y-6 justify-center items-center row-start-2 min-w-full min-h-full p-6 lg:gap-y-10;
+    }
+  
     .home-main{
         @apply flex flex-col justify-center gap-y-16;
     }
