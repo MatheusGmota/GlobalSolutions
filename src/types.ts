@@ -50,3 +50,9 @@ export type TipoEquipamento = {
     quantidade: number;
     horaOperacao: number;
 }
+
+export type TipoInfoEmpresa = {
+    respostas: TipoRespostas;
+    equipamentos: TipoEquipamento[];
+    producaoMensal: number;
+}

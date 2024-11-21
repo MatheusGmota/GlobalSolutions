@@ -1,14 +1,18 @@
-'use client'
+import { TipoEquipamento } from "@/types";
 
-import { TipoEquipamento } from "@/types"
-import { useEffect, useState } from "react"
+export default function TabelaEquipamentos({equipamentos, onDelete}: {equipamentos: TipoEquipamento[], onDelete: () => void }) {
 
-export default function TabelaEquipamentos() {
-    const [equipamentos, setEquipamentos] = useState<TipoEquipamento[]>([])
-
-    useEffect(() => {
-        setEquipamentos([])
-    },[equipamentos])
+    const handleDelete = (index: number) => {
+        const updatedEquipamentos = equipamentos.filter((_, i) => i !== index);
+ 
+        const storedData = localStorage.getItem("infoEmpresa");
+        if (storedData) {
+             const parsedData = JSON.parse(storedData);
+             parsedData.equipamentos = updatedEquipamentos;
+             localStorage.setItem("infoEmpresa", JSON.stringify(parsedData));
+        }
+        onDelete()
+    }
 
     return (
         <div className="overflow-x-auto px-4 lg:mt-4 h-96 scroll">
@@ -31,7 +35,7 @@ export default function TabelaEquipamentos() {
                             <td>{e.potencia}</td>
                             <td>{e.quantidade}</td>
                             <td>{e.horaOperacao}</td>
-                            <td className="link font-semibold text-red-600">Excluir</td>
+                            <td className="link font-semibold text-red-600" onClick={() => handleDelete(i)}>Excluir</td>
                         </tr>
                     ))}
                 </tbody>

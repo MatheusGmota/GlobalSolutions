@@ -53,13 +53,13 @@ export function FormEmpresa({ onSubmit }: { onSubmit: () => void }) {
                 <form className="grid gap-5 p-6" onSubmit={handleSubmit}>
                     <div>
                         <label className="text-white text-sm lg:text-base font-semibold block space-y-5">Nome da Empresa</label>
-                        <input type="text" name="nome" id="idNome" className="input input-bordered w-full max-w-xs mt-2 placeholder:text-sm" placeholder="Ex: BE-Fore" onChange={(e) => setEmpresa(
+                        <input type="text" name="nome" id="idNome" className="input input-bordered w-full max-w-xs mt-2 placeholder:text-sm" placeholder="Ex: BE-Fore" required onChange={(e) => setEmpresa(
                             {...empresa, nome: e.target.value}
                         )}/>
                     </div>
                     <div>
                         <label className="text-white text-sm lg:text-base font-semibold block">Localização da Empresa</label>
-                        <input type="text" name="local" id="idLocal" placeholder="Ex: SP" className="input input-bordered w-full max-w-xs mt-2 placeholder:text-sm" onChange={(e) => setEmpresa(
+                        <input type="text" name="local" id="idLocal" placeholder="Ex: SP" className="input input-bordered w-full max-w-xs mt-2 placeholder:text-sm" required onChange={(e) => setEmpresa(
                             {...empresa, local: e.target.value}
                         )}/>
                     </div>
@@ -67,7 +67,7 @@ export function FormEmpresa({ onSubmit }: { onSubmit: () => void }) {
                         <label className="text-white text-sm lg:text-base font-semibold block">Tipo</label>
                         <select name="idTipo" id="idTipo" className="select select-bordered w-full max-w-xs mt-2" onChange={(e) => setEmpresa(
                             {...empresa, idTipo: parseInt(e.target.value)}
-                        )}>
+                        )} required>
                             <option disabled defaultChecked>--- Tipo da Empresa ---</option>
                             {tipoEmpresas.map((t, i) => (
                                 <option value={t.id} key={i}>

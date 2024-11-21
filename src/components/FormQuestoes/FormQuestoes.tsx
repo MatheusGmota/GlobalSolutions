@@ -68,7 +68,8 @@ export function FormQuestoes({ onSubmit }: { onSubmit: () => void }) {
                             type="text"
                             className="input input-bordered input-primary text-sm w-full border-sky-800 focus-within:outline-none" 
                             placeholder="Digite aqui sua resposta"
-                            onChange={(e) => handleRespostaChange(q.idQuestao, e.target.value)} />
+                            onChange={(e) => handleRespostaChange(q.idQuestao, e.target.value)} 
+                            required/>
                     </fieldset>
                     ))}
                     <fieldset className="mb-2">
@@ -80,7 +81,8 @@ export function FormQuestoes({ onSubmit }: { onSubmit: () => void }) {
                             type="number"
                             className="input input-bordered input-primary text-sm w-full border-sky-800 focus-within:outline-none" 
                             placeholder="Digite aqui sua resposta"
-                            onChange={(e) => setProducaoMensal(parseFloat(e.target.value))}/>
+                            onChange={(e) => setProducaoMensal(parseFloat(e.target.value))}
+                            required />
                     </fieldset>
                     <fieldset>
                         <button type="submit" className="btn bg-sky-800 text-white w-full">Avançar</button>
