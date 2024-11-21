@@ -15,8 +15,8 @@ export default function TemplateEficiencia() {
 
     useEffect(() => {
         const chamadaApi = async () => {
-            // const id = localStorage.getItem("id")
-            const id = 1
+            const id = localStorage.getItem("id")
+            
             try {
                 const response = await fetch(`http://localhost:8080/api/relatorio?id-empresa=${id}`);
                 if (response.ok) {
