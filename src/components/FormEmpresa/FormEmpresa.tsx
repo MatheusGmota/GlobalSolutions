@@ -3,7 +3,7 @@
 import { InterfaceTipoEmpresas, TipoEmpresa } from "@/types";
 import React, { useEffect, useState } from "react";
 
-export function FormEmpresa({ onEmpresaCadastrada }: { onEmpresaCadastrada: () => void }) {
+export function FormEmpresa({ onSubmit }: { onSubmit: () => void }) {
 
     const [empresa, setEmpresa] = useState<TipoEmpresa>({
         idTipo: 0,
@@ -39,7 +39,7 @@ export function FormEmpresa({ onEmpresaCadastrada }: { onEmpresaCadastrada: () =
             if(response.ok){
                 const data = await response.json();
                 localStorage.setItem("id", data);
-                onEmpresaCadastrada()
+                onSubmit()
             }
         } catch (e) {
             console.error(e)
