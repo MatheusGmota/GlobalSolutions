@@ -19,8 +19,10 @@ export default function TemplateEquipamento({ onSubmit }: { onSubmit: () => void
     const handleSubmit = async () => {
         const infoEmpresa = localStorage.getItem("infoEmpresa")
         
+        const id = localStorage.getItem("id")
+
         try {
-            const response = await fetch("", {
+            const response = await fetch(`http://localhost:8080/api/empresa/${id}`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
