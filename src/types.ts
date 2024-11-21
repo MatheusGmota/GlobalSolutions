@@ -8,6 +8,11 @@ export type TipoQuestoes = {
     questao: string;
 }
 
+export type TipoRespostas = {
+    idQuestao: number;
+    resposta: string;
+}
+
 export interface InterfaceTipoEmpresas {
     id: number;
     tipo: string;
