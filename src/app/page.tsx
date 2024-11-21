@@ -5,7 +5,7 @@ import Link from "next/link";
 export default function Home() {
 	return (
 		<>
-			<main className="home-main">
+			<main className="main">
 				<section className="section-futuro">
 					<div className="left-side">
 						<h2 className="title-home">
@@ -56,7 +56,7 @@ export default function Home() {
 						</p>
 					</div>
 					<div>
-					<Link href={""} className="btn btn-active text-white">
+					<Link href="/relatorio" className="btn btn-active text-white">
           				Gerar Relatório
         			</Link>
 					</div>
