@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import DashboardEficiencia from "../DashboardEficiencia/DashboardEficiencia";
 import FeedbackQuestao from "../FeedbackQuestao/FeedbackQuestao";
 import { InterfaceEficiencia, TipoFeedbackQuestao } from "@/types";
@@ -11,6 +11,25 @@ export default function TemplateEficiencia() {
         eficienciaSetor: [],
         eficienciaGeral: {eficienciaEnergetica: 0,consumoMensal:0, visaoGeral: ""}
     })
+
+
+    useEffect(() => {
+        const chamadaApi = async () => {
+            // const id = localStorage.getItem("id")
+            const id = 1
+            try {
+                const response = await fetch(`http://localhost:8080/api/relatorio?id-empresa=${id}`);
+                if (response.ok) {
+                    const data = await response.json();
+                    setFeedbackQuestoes(data.feedbackQuestoes)
+                    setEficienciaEnergetica(data.eficienciaEnergetica)
+                }
+            } catch (e) {
+                console.error(e);
+            }
+        }
+        chamadaApi();
+    }, [])
 
     return (
         <section>

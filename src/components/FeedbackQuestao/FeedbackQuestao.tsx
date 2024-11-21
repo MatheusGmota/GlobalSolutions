@@ -12,7 +12,7 @@ export default function FeedbackQuestao({feedbackQuestao}: {feedbackQuestao: Tip
             <section className="flex flex-col gap-2 lg:gap-5 max-w-[80%]">
                 <h1 className="text-white text-base lg:text-xl">{feedbackQuestao.questao}</h1>
                 <h3 className="text-green-500 text-sm lg:text-base">{feedbackQuestao.resposta}</h3>
-                <p className="text-sm lg:text-base">{feedbackQuestao.feedback} Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus nihil eos necessitatibus dolor at atque, neque assumenda. Deleniti atque vitae obcaecati nemo iusto fugit est architecto earum velit laboriosam? Alias?</p>
+                <p className="text-sm lg:text-base">{feedbackQuestao.feedback}</p>
             </section>
             <section className="flex items-center justify-center lg:justify-end">
                 <figure>
