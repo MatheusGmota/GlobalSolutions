@@ -9,7 +9,7 @@ export default function Rodape() {
             <figure>
                 <Image src={fotoLogo} width={100} height={100} alt="Logo BE Fore" className="select-none"/>
             </figure>
-            <p>FIAP &copy; {new Date().getFullYear()} - Todos direitos reservados pelo grupo BE Fore</p>
+            <p>FIAP &copy; {new Date().getFullYear()} - Todos direitos reservados pelo grupo a.code</p>
         </aside>
         <MenuMidias/>
     </footer>
