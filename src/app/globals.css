@@ -11,4 +11,36 @@
     .main{
         @apply flex flex-col gap-y-6 justify-center items-center row-start-2 min-w-full min-h-full p-6 lg:gap-y-10;
     }
+  
+    .home-main{
+        @apply flex flex-col justify-center gap-y-16;
+    }
+
+    .title-home{
+        @apply text-4xl font-semibold text-white;
+    }
+
+    .section-desafio, .section-objetivo, .section-relatorio{
+        @apply flex flex-col justify-between gap-y-7 w-[95%] self-center;
+    }
+
+    .section-futuro{
+        @apply flex flex-row w-[95%] self-center justify-center align-middle;
+            
+        & .left-side{
+            @apply flex flex-col justify-center gap-y-7
+        }
+
+        & .text-home{
+            @apply w-[70%]
+        }
+    }
+
+    .text-home{
+        @apply text-lg;
+    }
+
+    .textos-home{
+       @apply flex flex-col gap-y-4;
+    }
 }
