@@ -1,6 +1,5 @@
 'use client'
-import { FormQuestoes } from '@/components/FormQuestoes/FormQuestoes';
-import Steps from '@/components/Steps/Steps';
+import Steps from '@/components/Steps/Steps'
 import React, { useState } from 'react'
 
 export default function Page() {
