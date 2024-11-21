@@ -3,7 +3,7 @@
 import { InterfaceTipoEmpresas, TipoEmpresa } from "@/types";
 import React, { useEffect, useState } from "react";
 
-export function FormEmpresa() {
+export function FormEmpresa({ onEmpresaCadastrada }: { onEmpresaCadastrada: () => void }) {
 
     const [empresa, setEmpresa] = useState<TipoEmpresa>({
         idTipo: 0,
@@ -27,6 +27,7 @@ export function FormEmpresa() {
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) =>{
         e.preventDefault()
+        
         try{
             const response = await fetch('http://localhost:8080/api/empresa', {
                 method: "POST",
@@ -38,6 +39,7 @@ export function FormEmpresa() {
             if(response.ok){
                 const data = await response.json();
                 localStorage.setItem("id", data);
+                onEmpresaCadastrada()
             }
         } catch (e) {
             console.error(e)
@@ -45,23 +47,24 @@ export function FormEmpresa() {
     }
 
     return (
-        <>
-            <div className="cad-empresa">
-                <form className="inputs" onSubmit={handleSubmit}>
+        <div className="flex flex-col">
+            <h2 className="text-white text-center text-2xl lg:text-4xl my-2">Sobre a empresa</h2>
+            <div className="self-center card bg-base-100 w-96 shadow-xl">
+                <form className="grid gap-5 p-6" onSubmit={handleSubmit}>
                     <div>
-                        <label>Nome da Empresa</label>
-                        <input className="border-white" type="text" name="nome" id="idNome" placeholder="Ex: BE-Fore" onChange={(e) => setEmpresa(
+                        <label className="text-white text-sm lg:text-base font-semibold block space-y-5">Nome da Empresa</label>
+                        <input type="text" name="nome" id="idNome" className="input input-bordered w-full max-w-xs mt-2 placeholder:text-sm" placeholder="Ex: BE-Fore" onChange={(e) => setEmpresa(
                             {...empresa, nome: e.target.value}
                         )}/>
                     </div>
                     <div>
-                        <label>Localização da Empresa</label>
-                        <input type="text" name="local" id="idLocal" placeholder="Ex: SP" onChange={(e) => setEmpresa(
+                        <label className="text-white text-sm lg:text-base font-semibold block">Localização da Empresa</label>
+                        <input type="text" name="local" id="idLocal" placeholder="Ex: SP" className="input input-bordered w-full max-w-xs mt-2 placeholder:text-sm" onChange={(e) => setEmpresa(
                             {...empresa, local: e.target.value}
                         )}/>
                     </div>
                     <div>
-                        <label>Tipo</label>
+                        <label className="text-white text-sm lg:text-base font-semibold block">Tipo</label>
                         <select name="idTipo" id="idTipo" className="select select-bordered w-full max-w-xs mt-2" onChange={(e) => setEmpresa(
                             {...empresa, idTipo: parseInt(e.target.value)}
                         )}>
@@ -73,9 +76,9 @@ export function FormEmpresa() {
                             ))}
                         </select>
                     </div>
-                    <button type="submit" className="button">Avançar</button>
+                    <button type="submit" className="btn bg-sky-800 text-white w-full">Avançar</button>
                 </form>
             </div>
-        </>
+        </div>
     )
 }
