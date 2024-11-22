@@ -10,7 +10,7 @@ export default function CardPlano({plano} : {plano: TipoPlano}) {
     return (
         <div
             className={`
-                ${plano.tipo === "Premium" ? 'relative bg-gray-900 shadow-2xl' : 'sm:mx-8 lg:mx-0'}
+                ${plano.tipo === "Premium" ? 'relative bg-gray-900 shadow-2xl' : 'bg-white sm:mx-8 lg:mx-0'}
                 ${plano.idPlano === 1 ? 'rounded-t-3xl sm:rounded-b-none lg:rounded-bl-3xl lg:rounded-tr-none' 
                     : 'sm:rounded-t-none lg:rounded-t-3xl'}
                 shadow-lg rounded-3xl p-8 ring-1 ring-gray-900/10 sm:p-10`}
