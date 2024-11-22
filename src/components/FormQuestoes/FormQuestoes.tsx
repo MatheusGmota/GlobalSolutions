@@ -10,7 +10,7 @@ export function FormQuestoes({ onSubmit }: { onSubmit: () => void }) {
     useEffect(() => {
         const chamadaApi = async () => {
             try {
-                const response = await fetch('http://localhost:8080/api/questoes');
+                const response = await fetch(process.env.NEXT_PUBLIC_URI as string + 'questoes');
                 const data = await response.json();
                 setQuestoes(data);
             } catch (e) {

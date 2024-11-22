@@ -11,7 +11,7 @@ export default function Equipe() {
 
     useEffect(() =>{
         const chamadaApi = async () => {
-            const response = await fetch("https://gist.githubusercontent.com/MatheusGmota/37aa6f86113271aa0b0dddc9b001d2bc/raw/ab249a30548d2aaf78c8b4d7a7337313460d1e54/time.json");
+            const response = await fetch(process.env.NEXT_URL_ALUNOS as string);
 
             const data = await response.json();
             setAlunos(data);

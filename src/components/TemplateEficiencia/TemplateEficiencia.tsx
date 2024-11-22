@@ -24,7 +24,7 @@ export default function TemplateEficiencia() {
             const id = localStorage.getItem("id")
             
             try {
-                const response = await fetch(`http://localhost:8080/api/relatorio?id-empresa=${id}`);
+                const response = await fetch(`${process.env.NEXT_PUBLIC_URI}relatorio?id-empresa=${id}`);
                 if (response.ok) {
                     const data = await response.json();
                     setFeedbackQuestoes(data.feedbackQuestoes)

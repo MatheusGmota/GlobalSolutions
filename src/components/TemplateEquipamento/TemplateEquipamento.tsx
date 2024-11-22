@@ -27,7 +27,7 @@ export default function TemplateEquipamento({ onSubmit }: { onSubmit: () => void
         const id = localStorage.getItem("id")
 
         try {
-            const response = await fetch(`http://localhost:8080/api/empresa/${id}`, {
+            const response = await fetch(`${process.env.NEXT_PUBLIC_URI}empresa/${id}`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
