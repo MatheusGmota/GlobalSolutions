@@ -12,7 +12,7 @@
 
 * **Clonando o repositório**:
 ```Bash
-git clone [https://github.com/MatheusGmota/GlobalSolutions.git](https://github.com/MatheusGmota/GlobalSolutions.git)
+git clone https://github.com/MatheusGmota/GlobalSolutions.git
 ```
 
 * **Instalando as dependências**:
