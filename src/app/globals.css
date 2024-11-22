@@ -1,3 +1,42 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components{
+
+    .steps .step-success:after {
+        @apply bg-green-500;
+    }
+
+    .steps .step-success + .step-success:before {
+        @apply bg-green-500;
+    }
+
+    .main{
+        @apply flex flex-col gap-y-6 justify-center items-center row-start-2 min-w-full min-h-full p-6 lg:gap-y-10;
+    }
+
+    .title-home{
+        @apply text-xl lg:text-3xl font-semibold text-green-500;
+    }
+
+    .section-desafio, .section-objetivo, .section-relatorio{
+        @apply flex flex-col justify-between gap-y-7 w-[95%] self-center;
+    }
+
+    .section-futuro{
+        @apply flex flex-col lg:flex-row w-[95%] items-center justify-center gap-10;
+            
+        & .left-side{
+            @apply flex flex-col justify-center gap-y-7
+        }
+    }
+
+    .text-home{
+        @apply text-white text-sm lg:text-base w-full text-justify;
+    }
+
+    .textos-home{
+       @apply flex flex-col gap-y-4;
+    }
+}
