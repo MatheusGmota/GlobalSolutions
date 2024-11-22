@@ -15,7 +15,7 @@ export function FormEmpresa({ onSubmit }: { onSubmit: () => void }) {
     useEffect(() => {
         const chamadaApi = async () => {
             try {
-                const response = await fetch(process.env.NEXT_PUBLIC_URI as string + '/tipo-empresa');
+                const response = await fetch(process.env.NEXT_PUBLIC_URI as string + 'tipo-empresa');
                 const data = await response.json();
                 setTipoEmpresas(data);
             } catch (e) {
