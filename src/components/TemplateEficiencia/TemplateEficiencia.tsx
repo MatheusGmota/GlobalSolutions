@@ -1,10 +1,15 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import DashboardEficiencia from "../DashboardEficiencia/DashboardEficiencia";
 import FeedbackQuestao from "../FeedbackQuestao/FeedbackQuestao";
 import { InterfaceEficiencia, TipoFeedbackQuestao } from "@/types";
+import { jsPDF } from "jspdf";
+import html2canvas from "html2canvas";
+import { useRouter } from "next/navigation";
 
 
 export default function TemplateEficiencia() {
+    const navegacao = useRouter()
+
     const [feedbackQuestoes, setFeedbackQuestoes] = useState<TipoFeedbackQuestao[]>([])
     
     const [eficienciaEnergetica, setEficienciaEnergetica] = useState<InterfaceEficiencia>({
@@ -12,6 +17,7 @@ export default function TemplateEficiencia() {
         eficienciaGeral: {eficienciaEnergetica: 0,consumoMensal:0, visaoGeral: ""}
     })
 
+    const pdfRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         const chamadaApi = async () => {
@@ -31,10 +37,28 @@ export default function TemplateEficiencia() {
         chamadaApi();
     }, [])
 
+    const exportarPDF = async () => {
+        try {
+            if (!pdfRef.current) return;
+
+            const canvas = await html2canvas(pdfRef.current); 
+            const imgData = canvas.toDataURL("image/png");
+            const pdf = new jsPDF("p", "mm", "a4");
+            const imgWidth = 210;
+            const imgHeight = (canvas.height * imgWidth) / canvas.width;
+
+            pdf.addImage(imgData, "PNG", 0, 0, imgWidth, imgHeight);
+            pdf.save("relatorio.pdf");
+        } catch (error) {
+            console.error(error);
+            navegacao.push("/planos")
+        }
+    };
+
     return (
         <section>
             <h2 className="font-bold text-sky-500 text-center lg:text-2xl">Relatório Geral e Sugestões</h2>
-            <div>
+            <div ref={pdfRef}>
                 {feedbackQuestoes.map((f, i) => (
                     <FeedbackQuestao feedbackQuestao={f} key={i}/>
                 ))}
@@ -52,6 +76,7 @@ export default function TemplateEficiencia() {
                     }
                 </div>
             </div>
+            <button onClick={exportarPDF} className="btn btn-primary">Exportar para PDF</button>
         </section>
     )
 }

@@ -17,7 +17,12 @@ export default function TemplateEquipamento({ onSubmit }: { onSubmit: () => void
     }
 
     const handleSubmit = async () => {
-        const infoEmpresa = localStorage.getItem("infoEmpresa")
+        const storedData = localStorage.getItem("infoEmpresa")
+        const infoEmpresa = storedData ? JSON.parse(storedData) as TipoInfoEmpresa : undefined
+        
+        if (!storedData) {
+            alert("Um erro ocorreu =(")
+        }
         
         const id = localStorage.getItem("id")
 
@@ -28,7 +33,7 @@ export default function TemplateEquipamento({ onSubmit }: { onSubmit: () => void
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify(infoEmpresa)
-            })
+            });
             if (response.ok) {
                 localStorage.removeItem("infoEmpresa")
                 onSubmit()
