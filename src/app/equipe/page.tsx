@@ -11,7 +11,7 @@ export default function Equipe() {
 
     useEffect(() =>{
         const chamadaApi = async () => {
-            const response = await fetch(process.env.NEXT_URL_ALUNOS as string);
+            const response = await fetch(process.env.NEXT_PUBLIC_URI_ALUNOS as string);
 
             const data = await response.json();
             setAlunos(data);
