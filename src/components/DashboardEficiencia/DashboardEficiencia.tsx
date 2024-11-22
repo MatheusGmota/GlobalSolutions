@@ -30,7 +30,7 @@ export default function DashboardEficiencia({ eficiencia }: { eficiencia: TipoEf
                 <div className="flex flex-col items-center gap-5">
                     <h3 className="font-semibold text-white text-sm lg:text-base">Eficiência Energética</h3>
                     <p className="flex flex-col items-center justify-center">
-                        <span className={`font-semibold text-4xl ${color}`}>{eficienciaEnergetica}</span>
+                        <span className={`font-semibold text-4xl ${color}`}>{eficienciaEnergetica.toFixed(2)}</span>
                         <span>por KWh</span>
                     </p>
                 </div>
