@@ -4,6 +4,14 @@
 
 @layer components{
 
+    .steps .step-success:after {
+        @apply bg-green-500;
+    }
+
+    .steps .step-success + .step-success:before {
+        @apply bg-green-500;
+    }
+
     .main{
         @apply flex flex-col gap-y-6 justify-center items-center row-start-2 min-w-full min-h-full p-6 lg:gap-y-10;
     }
